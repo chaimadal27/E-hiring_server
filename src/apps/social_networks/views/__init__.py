@@ -1,0 +1,2 @@
+from .social_networks_view import SocialNetworkList
+from .social_networks_view import SocialNetworkDetail

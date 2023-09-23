@@ -1,0 +1,35 @@
+stages:
+#  - test
+  - build
+  - deploy
+
+variables:
+  DOCKER_IMAGE_TAG: $CI_REGISTRY_IMAGE:v1 # $CI_COMMIT_SHORT_SHA
+
+build:
+  stage: build
+  image: docker:stable
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - docker build -f Dockerfile.build -t $DOCKER_IMAGE_TAG -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA .
+    - docker push $CI_REGISTRY_IMAGE
+  # only:
+  #   - dev
+
+staging_deploy:
+  stage: deploy
+  tags:
+    - staging-vps-1
+  # only:
+  #   - dev
+  before_script:
+    - echo "Docker registry Login"
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - echo "Docker pull image"
+    - docker pull $DOCKER_IMAGE_TAG
+  script:
+    - echo "Deploy to staging server"
+    - docker stack deploy --with-registry-auth -c deploy/staging.yml e_hiring_api

@@ -1,0 +1,5 @@
+from .candidate_serializer import CandidateSerializer,CandidateKanbanSerializer,ShareCVSerializer
+from .language_detail_serializer import LanguageDetailSerializer
+from .key_words_serializer import KeyWordsSerializer
+from .document_serializer import DocumentSerializer
+from .candidate_language_serializer import CandidateLanguageSerializer

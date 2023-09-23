@@ -1,0 +1,1 @@
+from .global_settings_model import GlobalSettings

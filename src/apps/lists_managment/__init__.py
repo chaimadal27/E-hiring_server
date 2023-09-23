@@ -1,0 +1,1 @@
+default_app_config = 'apps.lists_managment.apps.ListsManagmentConfig'

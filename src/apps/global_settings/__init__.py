@@ -1,0 +1,1 @@
+default_app_config = 'apps.global_settings.apps.GlobalSettingsConfig'

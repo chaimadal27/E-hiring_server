@@ -1,0 +1,9 @@
+{
+  "python.jediEnabled": true,
+  "python.linting.pep8Enabled": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.colors.errors.isRed":true,
+  "python.linting.colors.errors.isOrange":true,
+  "python.linting.underline":false
+}

@@ -1,0 +1,2 @@
+from .resource_adv_views import ResourceAdvantagesList
+from .resource_adv_views import ResourceAdvantagesDetail
